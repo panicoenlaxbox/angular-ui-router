@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <header>My application</header>
+    <a ui-sref="state1">State1</a>
+    <a ui-sref="state2">State2</a>
+    <div ui-view="view1"></div>
+    <div ui-view="view2"></div>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script>
+        var myApp = angular.module("myApp", ["ui.router"]);
+        myApp.config(function ($stateProvider, $urlRouterProvider) {
+            $stateProvider
+                .state("home", {
+                    url: "",
+                    views: {
+                        "view1": { template: "home-1" },
+                        "view2": { template: "home-2" }
+                    }
+                })
+                .state("state1", {
+                    url: "/route1",
+                    views: {
+                        "view1": { template: "state1-1" },
+                        "view2": { template: "state1-2" }
+                    }
+                })
+                .state("state2", {
+                    url: "/route2",
+                    views: {
+                        "view1": { template: "state2-1" } //view2 no mostrará ninguna vista
+                    }
+                });
+		$urlRouterProvider.otherwise("home"); //otherwise navega a estado index
+        });
+    </script>
+</body>
+</html>

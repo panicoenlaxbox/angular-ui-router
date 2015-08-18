@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="//localhost:35729/livereload.js"></script>
+</head>
+<body>
+	<ul>
+		<li><a ui-sref="home">home</a></li>
+		<li><a ui-sref="customers">customers</a></li>
+	</ul>
+	<div ui-view></div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script>
+(function() {
+	var app = angular.module("myApp", ["ui.router"]);
+	app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
+		$stateProvider
+			.state("home", {
+				url: "",
+				templateUrl: "nested/home.html"
+			})
+			.state("customers", {
+				url: "/customers",
+				templateUrl: "nested/customers.html"
+			})
+			.state("customers.orders", {
+				url: "/orders", // /customers/orders
+				templateUrl: "nested/orders.html"
+			})
+			$urlRouterProvider.otherwise("home");						
+	}]);
+})();
+	</script>
+</body>
+</html>

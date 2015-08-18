@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="//localhost:35729/livereload.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+	<ul>
+		<li><a ui-sref="home">home</a></li>
+		<li><a ui-sref="customers">customers</a></li>
+		<li><a ui-sref="orders">orders</a></li>
+		<li><a ui-sref="settings">settings</a></li>
+	</ul>
+	<div ui-view></div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/controllers.js"></script>
+</body>
+</html>
